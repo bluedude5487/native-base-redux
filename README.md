@@ -8,3 +8,8 @@ yarn add native-base --save
 yarn add @expo/vector-icons --save
 yarn start
 ```
+
+#Step 1
+Define actions in `actions.js` as described in [this section](https://redux.js.org/basics/actions).
+
+#Step 2
