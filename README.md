@@ -1,6 +1,6 @@
 Todo app described in [Redux Basic Tutorial](https://redux.js.org/basics/basic-tutorial) implemented using `native-base` for UI.
 
-#Setup
+# Setup
 ```
 expo init native-base-redux --template blank@sdk-32 --yarn
 cd native-base-redux
@@ -9,14 +9,14 @@ yarn add @expo/vector-icons --save
 yarn start
 ```
 
-#Step 1
+# Step 1
 Define actions in `actions.js` as described in [this section](https://redux.js.org/basics/actions).
 
 We need to import `redux`:
 ```
 yarn add redux --save
 ```
-#Step 2
+# Step 2
 Define reducers in `reducers.js` as described in [this section](https://redux.js.org/basics/reducers).
 
 ## Shape of State
@@ -36,7 +36,7 @@ Define reducers in `reducers.js` as described in [this section](https://redux.js
 }
 ```
 
-#Step 3
+# Step 3
 Setup redux store.
 ```
 yarn add redux --save
