@@ -1,26 +1,52 @@
 import React from 'react'
 import { List, ListItem, Text } from 'native-base'
 import { connect } from 'react-redux'
+import { toggleTodo } from '../actions'
 
 function VisibleTodoList(props){
-  const { list } = props
+  const { list, onTodoClick } = props
 
   return (
     <List
       dataArray={list}
       renderRow={(item, _, index)=>
-        <ListItem>
-          <Text>{item.text}</Text>
+        <ListItem onPress={()=>{onTodoClick(Number(index))}}>
+          <Text
+            style={{textDecorationLine: item.completed ? 'line-through' : 'none'}}>
+            {item.text}
+          </Text>
         </ListItem>
       }>
     </List>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    list: state.todos
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case 'SHOW_ALL':
+      return todos
+    case 'SHOW_COMPLETED':
+      return todos.filter(t => t.completed)
+    case 'SHOW_ACTIVE':
+      return todos.filter(t => !t.completed)
   }
 }
 
-export default connect(mapStateToProps)(VisibleTodoList)
+const mapStateToProps = state => {
+  return {
+    list: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTodoClick: id => {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VisibleTodoList)

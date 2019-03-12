@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import todoApp from './src/reducers'
 import HomeScreen from './src/components/HomeScreen'
@@ -14,25 +14,40 @@ import {
   VisibilityFilters
 } from './src/actions'
 
-const store = createStore(todoApp)
+const logger = store => next => action => {
+  console.group(action.type)
+  console.info('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  console.groupEnd()
+  return result
+}
 
+const store = createStore(
+  todoApp,
+  applyMiddleware(logger)
+)
+
+/*
 // Log the initial state
 console.log(store.getState())
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 const unsubscribe = store.subscribe(() => console.log(store.getState()))
-
+*/
 // Dispatch some actions
 store.dispatch(addTodo('Learn about actions'))
 store.dispatch(addTodo('Learn about reducers'))
 store.dispatch(addTodo('Learn about store'))
 store.dispatch(toggleTodo(0))
 store.dispatch(toggleTodo(1))
+/*
 store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
 
 // Stop listening to state updates
 unsubscribe()
+*/
 
 export default class App extends React.Component {
   render() {
