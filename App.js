@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 import todoApp from './src/reducers'
+import HomeScreen from './src/components/HomeScreen'
 
 // for testing only
 import {
@@ -35,18 +37,9 @@ unsubscribe()
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
+      <Provider store={store}>
+        <HomeScreen />
+      </Provider>
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
