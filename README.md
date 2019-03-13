@@ -53,3 +53,15 @@ Connect store to React as described in [this section](https://redux.js.org/basic
 ```
 yarn add react-redux --save
 ```
+
+See [this diff](https://github.com/lubaochuan/native-base-redux/commit/b8af0260feaef41aae2e9602542544c90bb1c417) for solution.
+
+Add reverse data flow to add and toggle todos as discribed in
+[usage with React section](https://redux.js.org/basics/usage-with-react).
+We also add a logger trivially as a piece of middleware to Redux.
+
+See [this diff](https://github.com/lubaochuan/native-base-redux/commit/e02e39505267558c0bebcd6e4eecdaf5768d68d0) for solution.
+
+Add data flow for filter links.
+
+See [this diff](https://github.com/lubaochuan/native-base-redux/commit/d97a7ce43527cad2f98537600929a1302b3f9616) for solution.
