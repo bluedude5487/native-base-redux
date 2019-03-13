@@ -1,5 +1,7 @@
 import React from 'react'
-import { Footer, FooterTab, Button, Text } from 'native-base'
+import { Footer, FooterTab } from 'native-base'
+import Link from "./Link"
+import { VisibilityFilters } from '../actions'
 
 export default function(props){
   const { list } = props
@@ -7,15 +9,9 @@ export default function(props){
   return (
     <Footer>
       <FooterTab>
-        <Button active>
-          <Text>All</Text>
-        </Button>
-        <Button>
-          <Text>Active</Text>
-        </Button>
-        <Button>
-          <Text>Completed</Text>
-        </Button>
+        <Link filter={VisibilityFilters.SHOW_ALL} label="All" />
+        <Link filter={VisibilityFilters.SHOW_ACTIVE} label="Active" />
+        <Link filter={VisibilityFilters.SHOW_COMPLETED} label="completed"/>
       </FooterTab>
     </Footer>
   )
