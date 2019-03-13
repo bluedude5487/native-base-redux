@@ -65,3 +65,7 @@ See [this diff](https://github.com/lubaochuan/native-base-redux/commit/e02e39505
 Add data flow for filter links.
 
 See [this diff](https://github.com/lubaochuan/native-base-redux/commit/d97a7ce43527cad2f98537600929a1302b3f9616) for solution.
+
+Here is a demo:
+
+![demo](demo1.gif).
