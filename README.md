@@ -69,3 +69,16 @@ See [this diff](https://github.com/lubaochuan/native-base-redux/commit/d97a7ce43
 Here is a demo:
 
 ![demo](demo1.gif).
+
+# Step 5
+Use Redux Persist to persist the redux store locally on the device as
+described in [here](http://www.reactnativeexpress.com/redux_persist).
+
+First, install `redux-persist` by running the following command in your project directory:
+```
+yarn add react-redux --save
+```
+
+Make changes as shown in this [diff](https://github.com/lubaochuan/native-base-redux/commit/6da3c976870f613a467c4eaab2ead175ac24ae5e).
+
+With persistence your app should be able to remember its state from the last time you use it. You can test this behavior by restarting the expo client or publish your app on expo.io and run it from your profile in the expo client.
