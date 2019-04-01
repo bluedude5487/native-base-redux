@@ -72,13 +72,38 @@ Here is a demo:
 
 # Step 5
 Use Redux Persist to persist the redux store locally on the device as
-described in [here](http://www.reactnativeexpress.com/redux_persist).
+described [here](http://www.reactnativeexpress.com/redux_persist).
 
 First, install `redux-persist` by running the following command in your project directory:
 ```
-yarn add react-redux --save
+yarn add react-persist --save
 ```
 
 Make changes as shown in this [diff](https://github.com/lubaochuan/native-base-redux/commit/6da3c976870f613a467c4eaab2ead175ac24ae5e).
 
 With persistence your app should be able to remember its state from the last time you use it. You can test this behavior by restarting the expo client or publish your app on expo.io and run it from your profile in the expo client.
+
+# Step 6
+Sync redux managed state with firebase as described
+[here](https://blog.bitsrc.io/building-a-todo-app-in-react-with-firebase-and-redux-ba3ab53a671b).
+
+First, install `firebase` for firebase interactivity and `redux-thunk` for
+handling synchronous actions in redux.
+```
+yarn add firebase redux-thunk --save
+```
+
+Next, create a new project on [firebase](https://console.firebase.google.com).
+
+Next, copy firebase database configuration and put it in a file.
+```
+const config = {
+  apiKey: "ENTER YOURS HERE",
+  authDomain: "ENTER YOURS HERE",
+  databaseURL: "ENTER YOURS HERE",
+  projectId: "ENTER YOURS HERE",
+  storageBucket: "ENTER YOURS HERE",
+  messagingSenderId: "ENTER YOURS HERE"
+}
+```
+Make git ignore it so that you won't accidentally check it in your project repo.
