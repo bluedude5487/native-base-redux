@@ -1,3 +1,5 @@
+import {todosRef} from './firebase'
+
 /*
  * action types
  */
@@ -21,13 +23,28 @@ export const VisibilityFilters = {
  */
 
 export function addTodo(text) {
-  return { type: ADD_TODO, text }
+  async dispatch => {
+    todosRef.push().set(newToDo);
+  }
+  //return { type: ADD_TODO, text }
 }
 
 export function toggleTodo(index) {
-  return { type: TOGGLE_TODO, index }
+  async dispatch => {
+    todosRef.child(index).remove();
+  }
+  //return { type: TOGGLE_TODO, index }
 }
 
 export function setVisibilityFilter(filter) {
   return { type: SET_VISIBILITY_FILTER, filter }
+}
+
+export const fetchToDos = () => async dispatch => {
+  todosRef.on("value", snapshot => {
+    dispatch({
+      type: FETCH_TODOS,
+      payload: snapshot.val()
+    })
+  })
 }

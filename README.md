@@ -95,7 +95,7 @@ yarn add firebase redux-thunk --save
 
 Next, create a new project on [firebase](https://console.firebase.google.com).
 
-Next, copy firebase database configuration and put it in a file.
+Next, copy firebase database configuration and put it in `dev.js`.
 ```
 const config = {
   apiKey: "ENTER YOURS HERE",
@@ -106,4 +106,7 @@ const config = {
   messagingSenderId: "ENTER YOURS HERE"
 }
 ```
-Make git ignore it so that you won't accidentally check it in your project repo.
+Make sure you won't accidentally check it in your project repo by adding the following line  to your `.gitignore` file:
+```
+dev.js
+```
