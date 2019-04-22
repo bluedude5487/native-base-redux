@@ -10,7 +10,7 @@ function VisibleTodoList(props){
     <List
       dataArray={list}
       renderRow={(item, _, index)=>
-        <ListItem onPress={()=>{onTodoClick(Number(index))}}>
+        <ListItem onPress={()=>{onTodoClick(Number(item.id), !item.completed)}}>
           <Text
             style={{textDecorationLine: item.completed ? 'line-through' : 'none'}}>
             {item.text}
@@ -22,6 +22,13 @@ function VisibleTodoList(props){
 }
 
 const getVisibleTodos = (todos, filter) => {
+  let array = []
+  const keys = Object.keys(todos)
+  for (const key of keys) {
+    array.push({id:key, text:todos[key].text, 
+                completed:todos[key].completed})
+  }
+
   switch (filter) {
     case 'SHOW_ALL':
       return todos
@@ -40,8 +47,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTodoClick: id => {
-      dispatch(toggleTodo(id))
+    onTodoClick: (id, completed) => {
+      dispatch(toggleTodo(id, completed))
     }
   }
 }

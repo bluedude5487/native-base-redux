@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
 import reduxThunk from 'redux-thunk'
+//import { logger } from 'redux-logger'
 
 import todoApp from './src/reducers'
 import fetchToDos from './src/actions'
@@ -16,7 +17,8 @@ import {
   addTodo,
   toggleTodo,
   setVisibilityFilter,
-  VisibilityFilters
+  VisibilityFilters,
+  fetchTodos
 } from './src/actions'
 
 const logger = store => next => action => {
@@ -64,7 +66,7 @@ unsubscribe()
 
 export default class App extends React.Component {
   componentWillMount() {
-   fetchToDos()
+   store.dispatch(fetchTodos())
   }
 
   render() {

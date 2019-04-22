@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import {
+  SET_TODOS,
   ADD_TODO,
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
@@ -13,7 +14,7 @@ const initialState = {
 
 function todoApp(state = initialState, action) {
   switch (action.type) {
-    case FETCH_TODOS:
+    case SET_TODOS:
       return action.payload
     default:
       return state

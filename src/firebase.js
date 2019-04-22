@@ -1,7 +1,7 @@
 import * as firebase from 'firebase'
 
-import { config } from "./keys"
+import ApiKeys from "./keys"
 
-firebase.initializeApp(config)
+firebase.initializeApp(ApiKeys.config)
 const databaseRef = firebase.database().ref()
-export const todosRef = databaseRef.child("todos")
+export const todoAppRef = databaseRef.child("todoApp")

@@ -1,9 +1,9 @@
-import {todosRef} from './firebase'
+import {todoAppRef} from './firebase'
 
 /*
  * action types
  */
-
+export const SET_TODOS = 'SET_TODOS'
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
@@ -22,29 +22,25 @@ export const VisibilityFilters = {
  * action creators
  */
 
-export function addTodo(text) {
-  async dispatch => {
-    todosRef.push().set(newToDo);
-  }
-  //return { type: ADD_TODO, text }
+export const addTodo = (text) => async dispatch => {
+  todoAppRef.child("todos").push().set({text, completed: false})
 }
 
-export function toggleTodo(index) {
-  async dispatch => {
-    todosRef.child(index).remove();
-  }
-  //return { type: TOGGLE_TODO, index }
+export const toggleTodo = (id, completed) => async dispatch => {
+  todoAppRef.child("todos").child(id).put("completed", completed);
 }
 
 export function setVisibilityFilter(filter) {
   return { type: SET_VISIBILITY_FILTER, filter }
 }
 
-export const fetchToDos = () => async dispatch => {
-  todosRef.on("value", snapshot => {
+export const fetchTodos = () => async dispatch => {
+  console.log("fetchTodos is called")
+  todoAppRef.on("value", snapshot => {
+    console.log(snapshot.val())
     dispatch({
-      type: FETCH_TODOS,
+      type: SET_TODOS,
       payload: snapshot.val()
     })
-  })
+  }, function(error) {console.log(error)})
 }
