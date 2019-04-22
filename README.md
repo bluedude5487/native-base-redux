@@ -95,18 +95,20 @@ yarn add firebase redux-thunk --save
 
 Next, create a new project on [firebase](https://console.firebase.google.com).
 
-Next, copy firebase database configuration and put it in `dev.js`.
+Next, copy firebase database configuration and put it in `src/keys.js`.
 ```
-const config = {
-  apiKey: "ENTER YOURS HERE",
-  authDomain: "ENTER YOURS HERE",
-  databaseURL: "ENTER YOURS HERE",
-  projectId: "ENTER YOURS HERE",
-  storageBucket: "ENTER YOURS HERE",
-  messagingSenderId: "ENTER YOURS HERE"
+export default {
+  config: {
+    apiKey: "ENTER YOURS HERE",
+    authDomain: "ENTER YOURS HERE",
+    databaseURL: "ENTER YOURS HERE",
+    projectId: "ENTER YOURS HERE",
+    storageBucket: "ENTER YOURS HERE",
+    messagingSenderId: "ENTER YOURS HERE"
+  }
 }
 ```
 Make sure you won't accidentally check it in your project repo by adding the following line  to your `.gitignore` file:
 ```
-dev.js
+src/keys.js
 ```
