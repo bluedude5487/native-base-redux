@@ -9,14 +9,17 @@ function VisibleTodoList(props){
   return (
     <List
       dataArray={list}
-      renderRow={(item, _, index)=>
-        <ListItem onPress={()=>{onTodoClick(Number(item.id), !item.completed)}}>
+      renderRow={(item, _, index)=>{
+        //{console.log("item:"+JSON.stringify(item))}
+        return (
+          <ListItem onPress={()=>{onTodoClick(item["id"], !item.completed)}}>
           <Text
             style={{textDecorationLine: item.completed ? 'line-through' : 'none'}}>
             {item.text}
           </Text>
-        </ListItem>
-      }>
+          </ListItem>
+        )
+      }}>
     </List>
   )
 }
@@ -25,17 +28,18 @@ const getVisibleTodos = (todos, filter) => {
   let array = []
   const keys = Object.keys(todos)
   for (const key of keys) {
-    array.push({id:key, text:todos[key].text, 
+    array.push({id:key, text:todos[key].text,
                 completed:todos[key].completed})
   }
-
+  
+  //console.log("todos:"+JSON.stringify(array))
   switch (filter) {
     case 'SHOW_ALL':
-      return todos
+      return array
     case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed)
+      return array.filter(t => t.completed)
     case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed)
+      return array.filter(t => !t.completed)
   }
 }
 

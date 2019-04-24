@@ -27,11 +27,12 @@ export const addTodo = (text) => async dispatch => {
 }
 
 export const toggleTodo = (id, completed) => async dispatch => {
-  todoAppRef.child("todos").child(id).put("completed", completed);
+  console.log("toggleTodo("+id+","+completed+") dispatched")
+  todoAppRef.child("todos").child(id).update({"completed": completed})
 }
 
-export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter }
+export const setVisibilityFilter = (filter) => async dispatch => {
+  todoAppRef.update({"visibilityFilter":filter})
 }
 
 export const fetchTodos = () => async dispatch => {
