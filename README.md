@@ -112,3 +112,6 @@ Make sure you won't accidentally check it in your project repo by adding the fol
 ```
 src/keys.js
 ```
+
+See [this diff](https://github.com/lubaochuan/native-base-redux/commit/4cc969ef73e5669d874bccae3e5fcd800c8dd398) for solution with add todo and toggle
+todo functions.
